@@ -21,6 +21,7 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { User } from "../../user/base/User";
+import { Product } from "../../product/base/Product";
 
 @ObjectType()
 class Customer {
@@ -80,6 +81,15 @@ class Customer {
     nullable: true,
   })
   location!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => Product,
+  })
+  @ValidateNested()
+  @Type(() => Product)
+  @IsOptional()
+  products?: Product | null;
 
   @ApiProperty({
     required: true,

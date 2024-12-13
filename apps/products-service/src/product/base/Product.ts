@@ -19,7 +19,7 @@ import {
   MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { User } from "../../user/base/User";
+import { Customer } from "../../customer/base/Customer";
 
 @ObjectType()
 class Product {
@@ -33,12 +33,12 @@ class Product {
 
   @ApiProperty({
     required: false,
-    type: () => User,
+    type: () => Customer,
   })
   @ValidateNested()
-  @Type(() => User)
+  @Type(() => Customer)
   @IsOptional()
-  customer?: User | null;
+  customer?: Customer | null;
 
   @ApiProperty({
     required: false,

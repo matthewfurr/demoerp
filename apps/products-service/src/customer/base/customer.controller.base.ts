@@ -57,6 +57,12 @@ export class CustomerControllerBase {
               connect: data.createdBy,
             }
           : undefined,
+
+        products: data.products
+          ? {
+              connect: data.products,
+            }
+          : undefined,
       },
       select: {
         createdAt: true,
@@ -71,6 +77,13 @@ export class CustomerControllerBase {
         customerName: true,
         id: true,
         location: true,
+
+        products: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -105,6 +118,13 @@ export class CustomerControllerBase {
         customerName: true,
         id: true,
         location: true,
+
+        products: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -140,6 +160,13 @@ export class CustomerControllerBase {
         customerName: true,
         id: true,
         location: true,
+
+        products: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -178,6 +205,12 @@ export class CustomerControllerBase {
                 connect: data.createdBy,
               }
             : undefined,
+
+          products: data.products
+            ? {
+                connect: data.products,
+              }
+            : undefined,
         },
         select: {
           createdAt: true,
@@ -192,6 +225,13 @@ export class CustomerControllerBase {
           customerName: true,
           id: true,
           location: true,
+
+          products: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
@@ -235,6 +275,13 @@ export class CustomerControllerBase {
           customerName: true,
           id: true,
           location: true,
+
+          products: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });

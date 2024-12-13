@@ -13,7 +13,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Product as PrismaProduct,
-  User as PrismaUser,
+  Customer as PrismaCustomer,
 } from "@prisma/client";
 
 export class ProductServiceBase {
@@ -41,7 +41,7 @@ export class ProductServiceBase {
     return this.prisma.product.delete(args);
   }
 
-  async getCustomer(parentId: string): Promise<PrismaUser | null> {
+  async getCustomer(parentId: string): Promise<PrismaCustomer | null> {
     return this.prisma.product
       .findUnique({
         where: { id: parentId },

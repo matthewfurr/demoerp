@@ -1,8 +1,8 @@
-import { User } from "../user/User";
+import { Customer } from "../customer/Customer";
 
 export type Product = {
   createdAt: Date;
-  customer?: User | null;
+  customer?: Customer | null;
   description: string | null;
   id: string;
   name: string | null;

@@ -8,6 +8,7 @@ import {
   TextField,
 } from "react-admin";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
+import { PRODUCT_TITLE_FIELD } from "../product/ProductTitle";
 
 export const CustomerShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -21,6 +22,13 @@ export const CustomerShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Customer Name" source="customerName" />
         <TextField label="ID" source="id" />
         <TextField label="location" source="location" />
+        <ReferenceField
+          label="Products"
+          source="product.id"
+          reference="Product"
+        >
+          <TextField source={PRODUCT_TITLE_FIELD} />
+        </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>
     </Show>

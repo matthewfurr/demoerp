@@ -19,7 +19,6 @@ import {
   MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { ProductCreateNestedManyWithoutUsersInput } from "./ProductCreateNestedManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
@@ -80,18 +79,6 @@ class UserCreateInput {
   @IsString()
   @Field(() => String)
   password!: string;
-
-  @ApiProperty({
-    required: false,
-    type: () => ProductCreateNestedManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => ProductCreateNestedManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => ProductCreateNestedManyWithoutUsersInput, {
-    nullable: true,
-  })
-  products?: ProductCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,

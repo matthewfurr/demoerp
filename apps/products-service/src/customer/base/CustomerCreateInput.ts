@@ -19,6 +19,7 @@ import {
   MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
+import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueInput";
 
 @InputType()
 class CustomerCreateInput {
@@ -65,6 +66,18 @@ class CustomerCreateInput {
     nullable: true,
   })
   location?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => ProductWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => ProductWhereUniqueInput)
+  @IsOptional()
+  @Field(() => ProductWhereUniqueInput, {
+    nullable: true,
+  })
+  products?: ProductWhereUniqueInput | null;
 }
 
 export { CustomerCreateInput as CustomerCreateInput };

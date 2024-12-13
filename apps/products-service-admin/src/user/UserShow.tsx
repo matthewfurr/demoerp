@@ -12,6 +12,7 @@ import {
 } from "react-admin";
 
 import { USER_TITLE_FIELD } from "./UserTitle";
+import { PRODUCT_TITLE_FIELD } from "../product/ProductTitle";
 
 export const UserShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -43,22 +44,13 @@ export const UserShow = (props: ShowProps): React.ReactElement => {
             <TextField label="Customer Name" source="customerName" />
             <TextField label="ID" source="id" />
             <TextField label="location" source="location" />
-            <DateField source="updatedAt" label="Updated At" />
-          </Datagrid>
-        </ReferenceManyField>
-        <ReferenceManyField
-          reference="Product"
-          target="customerId"
-          label="Products"
-        >
-          <Datagrid rowClick="show" bulkActionButtons={false}>
-            <DateField source="createdAt" label="Created At" />
-            <ReferenceField label="Customer" source="user.id" reference="User">
-              <TextField source={USER_TITLE_FIELD} />
+            <ReferenceField
+              label="Products"
+              source="product.id"
+              reference="Product"
+            >
+              <TextField source={PRODUCT_TITLE_FIELD} />
             </ReferenceField>
-            <TextField label="description" source="description" />
-            <TextField label="ID" source="id" />
-            <TextField label="name" source="name" />
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>

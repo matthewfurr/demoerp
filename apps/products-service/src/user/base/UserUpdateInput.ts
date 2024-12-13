@@ -19,7 +19,6 @@ import {
   MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { ProductUpdateManyWithoutUsersInput } from "./ProductUpdateManyWithoutUsersInput";
 import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
@@ -83,18 +82,6 @@ class UserUpdateInput {
     nullable: true,
   })
   password?: string;
-
-  @ApiProperty({
-    required: false,
-    type: () => ProductUpdateManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => ProductUpdateManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => ProductUpdateManyWithoutUsersInput, {
-    nullable: true,
-  })
-  products?: ProductUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

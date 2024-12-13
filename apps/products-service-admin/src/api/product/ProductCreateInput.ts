@@ -1,7 +1,7 @@
-import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+import { CustomerWhereUniqueInput } from "../customer/CustomerWhereUniqueInput";
 
 export type ProductCreateInput = {
-  customer?: UserWhereUniqueInput | null;
+  customer?: CustomerWhereUniqueInput | null;
   description?: string | null;
   name?: string | null;
 };

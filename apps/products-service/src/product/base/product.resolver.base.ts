@@ -26,7 +26,7 @@ import { ProductFindUniqueArgs } from "./ProductFindUniqueArgs";
 import { CreateProductArgs } from "./CreateProductArgs";
 import { UpdateProductArgs } from "./UpdateProductArgs";
 import { DeleteProductArgs } from "./DeleteProductArgs";
-import { User } from "../../user/base/User";
+import { Customer } from "../../customer/base/Customer";
 import { ProductService } from "../product.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Product)
@@ -160,16 +160,18 @@ export class ProductResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => User, {
+  @graphql.ResolveField(() => Customer, {
     nullable: true,
     name: "customer",
   })
   @nestAccessControl.UseRoles({
-    resource: "User",
+    resource: "Customer",
     action: "read",
     possession: "any",
   })
-  async getCustomer(@graphql.Parent() parent: Product): Promise<User | null> {
+  async getCustomer(
+    @graphql.Parent() parent: Product
+  ): Promise<Customer | null> {
     const result = await this.service.getCustomer(parent.id);
 
     if (!result) {

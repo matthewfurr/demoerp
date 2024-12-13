@@ -8,6 +8,7 @@ import {
   TextInput,
 } from "react-admin";
 import { UserTitle } from "../user/UserTitle";
+import { ProductTitle } from "../product/ProductTitle";
 
 export const CustomerCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -23,6 +24,13 @@ export const CustomerCreate = (props: CreateProps): React.ReactElement => {
         <TextInput label="Customer ID" source="customerId" />
         <TextInput label="Customer Name" source="customerName" />
         <TextInput label="location" source="location" />
+        <ReferenceInput
+          source="products.id"
+          reference="Product"
+          label="Products"
+        >
+          <SelectInput optionText={ProductTitle} />
+        </ReferenceInput>
       </SimpleForm>
     </Create>
   );
